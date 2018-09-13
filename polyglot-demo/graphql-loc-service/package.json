@@ -1,7 +1,7 @@
 {
   "name": "graphql-loc-service",
   "version": "1.0.0",
-  "description": "A simple GraphQL Loca Service",
+  "description": "A simple GraphQL Location Service",
   "main": "server.js",
   "scripts": {
     "start": "nodemon ./server.js --exec babel-node -e js",

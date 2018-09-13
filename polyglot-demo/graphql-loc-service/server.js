@@ -10,7 +10,8 @@ import { schema } from './src/schema';
 
 const PORT = 7700;
 const server = express();
-server.use('*', cors({ origin: 'http://localhost:7800' }));
+//server.use('*', cors({ origin: 'http://localhost:7800' }));
+server.use('*', cors());
 
 server.use('/graphql', bodyParser.json(), graphqlExpress({
   schema

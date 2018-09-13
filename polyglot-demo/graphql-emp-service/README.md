@@ -1,5 +1,12 @@
-mvn jetty:run
-localhost:8080
+# graphql-emp-service
+
+Simple demo GraphQL written in Java 
+
+### Running the example
+
+docker build -t graphql-emp-service:v1 .
+docker run -p 8080:8080  graphql-emp-service:v1 
+
 
 Introspection
 -------------
