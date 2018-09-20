@@ -1,0 +1,49 @@
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    run: loc-service
+  name: loc-service
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: loc-service
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        run: loc-service
+    spec:
+      containers:
+      - image: graphql-loc-service:v1
+        imagePullPolicy: IfNotPresent
+        name: loc-service
+        ports:
+        - containerPort: 7700
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    run: loc-service
+  name: loc-service
+  namespace: default
+spec:
+  ports:
+  - port: 7700
+    targetPort: 7700
+    protocol: TCP
+    nodePort: 30001
+  selector:
+    run: loc-service
+  sessionAffinity: None
+  type: NodePort

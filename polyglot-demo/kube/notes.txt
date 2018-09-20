@@ -1,0 +1,10 @@
+# incubator
+
+kubectl run curl --image=radial/busyboxplus:curl -i --tty
+root@curl-775f9567b5-spwqh:/ ]$ curl \
+>   -X POST \
+>   -H "Content-Type: application/json" \
+>   --data '{ "query": "{ locations { name city } }" }' \
+>   https://10.99.74.72:7700/graphql
+>   
+kubectl attach curl-775f9567b5-spwqh -c curl -i -t' command when the pod is running

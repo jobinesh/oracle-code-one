@@ -12,8 +12,8 @@ async function run() {
 			fetcher
 		});
 	}
-	const locServiceSchema = await createRemoteSchema('http://localhost:7700/graphql')
-	const hrServiceSchema = await createRemoteSchema('http://localhost:8080/graphql');
+	const locServiceSchema = await createRemoteSchema(`${process.env.EMP_SVC_URI}/graphql`)
+	const hrServiceSchema = await createRemoteSchema(`${process.env.LOC_SVC_URI}/graphql`);
 	const linkSchemaDefs = `
 		extend type Department {
 			location: Location

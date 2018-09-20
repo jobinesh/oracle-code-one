@@ -1,0 +1,53 @@
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    run: api-gateway
+  name: api-gateway
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: api-gateway
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        run: api-gateway
+    spec:
+      containers:
+      - image: graphql-api-gateway:v1
+        imagePullPolicy: IfNotPresent
+        name: api-gateway
+        env:
+          - name: EMP_SVC_URI
+            value: http://emp-service.default.svc.cluster.local:8080
+          - name: LOC_SVC_URI
+            value: http://loc-service.default.svc.cluster.local:7700  
+        ports:
+        - containerPort: 3000
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    run: api-gateway
+  name: api-gateway
+  namespace: default
+spec:
+  ports:
+  - port: 3000
+    protocol: TCP
+    nodePort: 30002
+  selector:
+    run: api-gateway
+  sessionAffinity: None
+  type: NodePort
