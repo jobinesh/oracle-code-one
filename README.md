@@ -1,6 +1,6 @@
 # incubator
 
-minikube start
+minikube start  
 eval $(minikube docker-env)  
 docker build -t graphql-loc-service:v1 ./graphql-loc-service/  
 docker build -t graphql-emp-service:v1 ./graphql-emp-service/  
