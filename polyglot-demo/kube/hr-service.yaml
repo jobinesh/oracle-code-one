@@ -3,14 +3,14 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   labels:
-    run: loc-service
-  name: loc-service
+    run: hr-service
+  name: hr-service
   namespace: default
 spec:
   replicas: 1
   selector:
     matchLabels:
-      run: loc-service
+      run: hr-service
   strategy:
     rollingUpdate:
       maxSurge: 1
@@ -19,14 +19,19 @@ spec:
   template:
     metadata:
       labels:
-        run: loc-service
+        run: hr-service
     spec:
       containers:
-      - image: loc-service:v1
+      - image: hr-service:v1
         imagePullPolicy: IfNotPresent
-        name: loc-service
+        name: hr-service
+        env:
+          - name: EMP_SVC_URI
+            value: http://emp-service.default.svc.cluster.local:8080
+          - name: LOC_SVC_URI
+            value: http://loc-service.default.svc.cluster.local:7070  
         ports:
-        - containerPort: 7070
+        - containerPort: 9090
       dnsPolicy: ClusterFirst
       restartPolicy: Always
 ---
@@ -34,16 +39,15 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    run: loc-service
-  name: loc-service
+    run: hr-service
+  name: hr-service
   namespace: default
 spec:
   ports:
-  - port: 7070
-    targetPort: 7070
+  - port: 9090
     protocol: TCP
-    nodePort: 30001
+    nodePort: 30002
   selector:
-    run: loc-service
+    run: hr-service
   sessionAffinity: None
   type: NodePort

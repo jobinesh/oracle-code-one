@@ -7,13 +7,13 @@ const channels = [{
 }];
 const locations = [{
   id: 2000,
-  name: 'FosterCity',
+  name: 'Foster City',
   state: 'CA',
   country: 'US'
 }, 
 {
   id: 3000,
-  name: 'Sanfrancisco',
+  name: 'San Francisco',
   state: 'CA',
   country: 'US'
 }];

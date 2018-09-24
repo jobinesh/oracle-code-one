@@ -8,7 +8,7 @@ import bodyParser from 'body-parser';
 
 import { schema } from './src/schema';
 
-const PORT = 7700;
+const PORT = 7070;
 const server = express();
 //server.use('*', cors({ origin: 'http://localhost:7800' }));
 server.use('*', cors());

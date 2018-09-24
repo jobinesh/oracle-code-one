@@ -22,7 +22,7 @@ spec:
         run: emp-service
     spec:
       containers:
-      - image: graphql-emp-service:v1
+      - image: emp-service:v1
         imagePullPolicy: IfNotPresent
         name: emp-service
         ports:

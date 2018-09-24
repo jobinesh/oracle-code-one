@@ -12,7 +12,8 @@ public class DepartmentRepository {
 
             add(new Department(10, "HR", 100, 2000));
             add(new Department(20, "IT", 200, 2000));
-            add(new Department(30, "Sales", 300, 2000));
+            add(new Department(30, "Sales", 300, 3000));
+            add(new Department(40, "Finance", 400, 3000));
         }
     };
 
