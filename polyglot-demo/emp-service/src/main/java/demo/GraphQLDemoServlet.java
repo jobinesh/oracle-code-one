@@ -20,6 +20,7 @@ public class GraphQLDemoServlet extends SimpleGraphQLServlet {
     private static GraphQLSchema buildSchema() {
         DepartmentRepository departmentRepository = new DepartmentRepository();
         EmployeeRepository employeeRepository = new EmployeeRepository();
+        System.out.println("Employee Service is running. Open http://localhost:8080/ to run queries");
         return SchemaParser.newParser()
                 .file("schema.graphqls")
                 .resolvers(new Query(departmentRepository, employeeRepository),
