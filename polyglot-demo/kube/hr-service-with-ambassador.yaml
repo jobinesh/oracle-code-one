@@ -1,0 +1,69 @@
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    run: hr-service
+  name: hr-service
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: hr-service
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        run: hr-service
+    spec:
+      containers:
+      - image: hr-service:v1
+        imagePullPolicy: IfNotPresent
+        name: hr-service
+        env:
+          - name: EMP_SVC_URI
+            value: http://emp-service.default.svc.cluster.local:8080
+          - name: LOC_SVC_URI
+            value: http://loc-service.default.svc.cluster.local:7070  
+        ports:
+        - containerPort: 9090
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    run: hr-service
+  name: hr-service
+  namespace: default
+  annotations:
+    getambassador.io/config: |
+      ---
+      apiVersion: ambassador/v0
+      kind:  Mapping
+      name:  fws-hr-service0
+      prefix: /graphiql
+      rewrite: /graphiql
+      service: hr-service
+      ---
+      apiVersion: ambassador/v0
+      kind:  Mapping
+      name:  fws-hr-service1
+      prefix: /graphql
+      rewrite: /graphql
+      service: hr-service
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 9090
+  selector:
+    run: hr-service
+  sessionAffinity: None
+  type: ClusterIP
