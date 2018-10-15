@@ -21,8 +21,8 @@ kubectl get pods
 kubectl delete pods  hr-service-6d88f574cb-jlj78  
 
 >>minikube service ambassador --url
->>http://192.168.99.100:32516
-Open http://192.168.99.100:32516/graphiql
+>>http://192.168.99.100:32402
+Open http://192.168.99.100:32402/graphiql
 
 Introspection
 -------------
