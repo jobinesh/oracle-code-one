@@ -1,9 +1,9 @@
 # Oracle Code One 2018 demo
 
-git clone https://github.com/jobinesh/oracle-code-one.git
-cd  <oracle-code-one>/polyglot-demo
+git clone https://github.com/jobinesh/oracle-code-one.git  
+cd  <oracle-code-one>/polyglot-demo  
 minikube start   
-eval $(minikube docker-env) 
+eval $(minikube docker-env)  
 docker build -t loc-service:v1 ./loc-service/   
 docker build -t emp-service:v1 ./emp-service/  
 docker build -t hr-service:v1 ./hr-service/  
@@ -29,9 +29,7 @@ Introspection
       kind
     }
   }
-}
-
-
+}  
 
 {
   __type(name: "Query") {
@@ -50,8 +48,7 @@ Introspection
       }
     }
   }
-}
-
+}  
 
 {
   __type(name: "Mutation") {
@@ -71,7 +68,7 @@ Introspection
       }
     }
   }
-}
+}  
 
 {
   __type(name: "Location") {
@@ -84,7 +81,7 @@ Introspection
       }
     }
   }
-}
+}  
 
 {
   __type(name: "DepartmentInput") {
@@ -95,7 +92,7 @@ Introspection
       description
     }
   }
-}
+}  
 
 {
   __type(name:"EmployeeFilter"){
@@ -111,8 +108,7 @@ Introspection
     }
     
   }
-}
-
+}  
 
 query Department {
   __type(name: "Department") {
@@ -131,10 +127,14 @@ query Department {
 Query 
 ----------------------------------------
 
-query{departments{ __typename, departmentId, departmentName}}
-query{departments{ departmentId, departmentName}}
-query{departments{departmentId, departmentName,managerId,location{country}, employees{employeeId,email}}} 
-query{employeesByFilter(filter:{departmentId:10}){firstName,lastName,departmentId}}
+query{departments{ __typename, departmentId, departmentName}}  
+
+query{departments{ departmentId, departmentName}}  
+
+query{departments{departmentId, departmentName,managerId,location{country}, employees{employeeId,email}}}  
+
+query{employeesByFilter(filter:{departmentId:10}){firstName,lastName,departmentId}}  
+
 query{employeesByFilter(filter:{departmentId:20,firstName:"Matthew"}){firstName,lastName,departmentId}}  
 
 Mutation
@@ -144,7 +144,7 @@ mutation updateEmployee($empInput: EmployeeInput) {
   updateEmployee(input:$empInput) {
    employeeId
   }
-}
+}  
 
 {"empInput": {"employeeId": 100,"email": "updated@phoo.com"}}
 
@@ -155,8 +155,7 @@ mutation updateEmployee($empInput: EmployeeInput) {
     lastName
     email
   }
-}
-
+}  
 
 mutation addLocation {
   addLocation(
