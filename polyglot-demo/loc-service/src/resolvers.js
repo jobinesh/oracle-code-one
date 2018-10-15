@@ -1,45 +1,50 @@
-const channels = [{
-  id: 1,
-  name: 'soccer',
-}, {
-  id: 2,
-  name: 'baseball',
-}];
 const locations = [{
-  id: 2000,
-  name: 'Foster City',
-  state: 'CA',
-  country: 'US'
-}, 
-{
-  id: 3000,
-  name: 'San Francisco',
-  state: 'CA',
-  country: 'US'
-}];
+    id: 1000,
+    name: 'Foster City Centre',
+    city: 'Foster City',
+    street: '714 Bounty Dr',
+    state: 'CA',
+    zip: '94404',
+    country: 'US'
+  },
+  {
+    id: 1001,
+    name: 'San Francisco',
+    city: 'San Francisco',
+    street: '475 Sansome St',
+    state: 'CA',
+    zip: '94111',
+    country: 'US'
+  }
+];
 
-let nextId = 3;
+let nextId = 1002;
 
 export const resolvers = {
   Query: {
-    channels: () => {
-      return channels;
-    },
-    channel: (root, { id }) => {
-      return channels.find(channel => channel.id == id);
-    },
-    locations:() => {
+    locations: () => {
       return locations;
     },
-    location: (root, { id }) => {
+    location: (root, {
+      id
+    }) => {
       return locations.find(location => location.id == id);
     }
   },
+
   Mutation: {
-    addChannel: (root, args) => {
-      const newChannel = { id: nextId++, name: args.name };
-      channels.push(newChannel);
-      return newChannel;
+    addLocation: (root, args) => {
+      const newLoc = {
+        id: nextId++,
+        name: args.name,
+        street: args.street,
+        city: args.city,
+        state: args.state,
+        zip: args.zip,
+        country: args.country
+      };
+      locations.push(newLoc);
+      return newLoc;
     },
   },
 };

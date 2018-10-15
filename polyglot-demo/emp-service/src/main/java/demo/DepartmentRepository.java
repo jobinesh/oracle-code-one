@@ -10,10 +10,10 @@ public class DepartmentRepository {
     static List<Department> departments = new ArrayList<Department>() {
         {
 
-            add(new Department(10, "HR", 100, 2000));
-            add(new Department(20, "IT", 200, 2000));
-            add(new Department(30, "Sales", 300, 3000));
-            add(new Department(40, "Finance", 400, 3000));
+            add(new Department(10, "HR", 100, 1001));
+            add(new Department(20, "IT", 200, 1001));
+            add(new Department(30, "Sales", 300, 1000));
+            add(new Department(40, "Finance", 400, 1000));
         }
     };
 

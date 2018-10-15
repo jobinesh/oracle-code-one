@@ -161,3 +161,18 @@ mutation updateEmployee($empInput: EmployeeInput) {
   }
 }
 
+-------------------
+mutation addLocation {
+  addLocation(
+    name: "Redwood City",
+    city: "Redwood City",
+    street: "100 Oracle Pkwy",
+    zip: "94065",
+    state: "CA",
+    country: "US"
+  ) {
+    id
+    name
+    city
+  }
+}
