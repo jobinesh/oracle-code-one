@@ -1,28 +1,22 @@
-# incubator
+# Oracle Code One 2018 demo
 
+git clone https://github.com/jobinesh/oracle-code-one.git
+cd  <oracle-code-one>/polyglot-demo
 minikube start   
-eval $(minikube docker-env)  
+eval $(minikube docker-env) 
 docker build -t loc-service:v1 ./loc-service/   
 docker build -t emp-service:v1 ./emp-service/  
 docker build -t hr-service:v1 ./hr-service/  
 kubectl apply -f ./kube/emp-service.yaml  
 kubectl apply -f ./kube/loc-service.yaml  
--- kubectl apply -f ./kube/hr-service.yaml  
 kubectl apply -f ./kube/ambassador.yaml
 kubectl apply -f ./kube/hr-service-with-ambassador.yaml 
 
-minikube service hr-service  
+>>minikube service ambassador --url  
+>>http://192.168.99.100:32402  
 
-# Redeploy hr-service on minikube start 
-
-kubectl delete services hr-service  
-kubectl delete deployments hr-service  
-kubectl get pods  
-kubectl delete pods  hr-service-6d88f574cb-jlj78  
-
->>minikube service ambassador --url
->>http://192.168.99.100:32402
-Open http://192.168.99.100:32402/graphiql
+Open http://192.168.99.100:32402/graphiql  on browser (Please note that  URL changes with returned by 'minikube service ambassador --url' )  
+Following are some examples for you to try out on graphiql window :
 
 Introspection
 -------------
@@ -134,6 +128,7 @@ query Department {
   }
 }
 
+Query 
 ----------------------------------------
 
 query{departments{ __typename, departmentId, departmentName}}
@@ -142,6 +137,7 @@ query{departments{departmentId, departmentName,managerId,location{country}, empl
 query{employeesByFilter(filter:{departmentId:10}){firstName,lastName,departmentId}}
 query{employeesByFilter(filter:{departmentId:20,firstName:"Matthew"}){firstName,lastName,departmentId}}  
 
+Mutation
 ----------------------------------------
 
 mutation updateEmployee($empInput: EmployeeInput) {
@@ -161,7 +157,7 @@ mutation updateEmployee($empInput: EmployeeInput) {
   }
 }
 
--------------------
+
 mutation addLocation {
   addLocation(
     name: "Redwood City",

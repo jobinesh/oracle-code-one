@@ -60,3 +60,9 @@ typings/
 
 # next.js build output
 .next
+
+# Skip VS code files and folders
+bin/
+.classpath
+.project
+.settings/
