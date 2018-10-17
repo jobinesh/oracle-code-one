@@ -17,7 +17,7 @@ kubectl apply -f ./kube/hr-service-with-ambassador.yaml
 >>minikube service ambassador --url  
 >>http://192.168.99.100:32402  
 
-Open http://192.168.99.100:32402/graphiql  on browser (Please note that  URL changes with returned by 'minikube service ambassador --url' )  
+Open http://192.168.99.100:32402/graphiql  on browser (Please note that  URL changes with value returned by 'minikube service ambassador --url' )  
 Following are some examples for you to try out on graphiql window :  
 ```javascript
 Demo - GraphQL in JavaScript  
