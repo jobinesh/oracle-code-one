@@ -1,10 +1,9 @@
 import {
-  makeExecutableSchema,
-} from 'graphql-tools';
+  ApolloServer,
+  gql
+} from 'apollo-server-express';
 
-import { resolvers } from './resolvers';
-
-const typeDefs = `
+const schema = gql `
     type Location {
       id: ID!
       name: String
@@ -27,5 +26,7 @@ const typeDefs = `
     }
     `;
 
-const schema = makeExecutableSchema({ typeDefs, resolvers });
-export { schema };
+
+export {
+  schema
+};
