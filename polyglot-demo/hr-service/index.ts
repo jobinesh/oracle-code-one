@@ -14,7 +14,6 @@ const createRemoteSchema = async (uri: string) => {
 }
 var stitchedSchema: any;
 async function buildSchema() {
-	//LOC_SVC_URI=http://localhost:7070 EMP_SVC_URI=http://localhost:8080 
 	console.log('Schema fetch:v1 - begin');
 	const locServiceSchema = await createRemoteSchema(`${process.env.LOC_SVC_URI}/graphql`);
 	const empServiceSchema = await createRemoteSchema(`${process.env.EMP_SVC_URI}/graphql`)
