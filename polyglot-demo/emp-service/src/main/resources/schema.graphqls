@@ -14,7 +14,7 @@ type Mutation {
 }
 
 type Department{
-  departmentId: Int!
+  departmentId: ID!
   departmentName: String!
   employees: [Employee]
   managerId: Int
@@ -23,7 +23,7 @@ type Department{
 
 
 type Employee{
-  employeeId: Int!
+  employeeId: ID!
   firstName: String!
   lastName: String!
   email: String!
@@ -38,7 +38,7 @@ input EmployeeFilter{
 
 
 input EmployeeInput{
-  employeeId: Int!
+  employeeId: ID!
   firstName: String
   lastName: String
   email: String
