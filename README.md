@@ -3,7 +3,7 @@
 Install minikube https://kubernetes.io/docs/tasks/tools/install-minikube/  
 # Set up demo project 
 git clone https://github.com/jobinesh/oracle-code-one.git  
-cd  <oracle-code-one>/polyglot-demo  
+cd  &lt;oracle-code-one>/polyglot-demo  
 minikube start   
 eval $(minikube docker-env)  
 docker build -t loc-service:v1 ./loc-service/   
