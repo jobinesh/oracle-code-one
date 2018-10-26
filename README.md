@@ -1,4 +1,4 @@
-# If you are new to Kubernetes, it is worth reading the following aritcle 
+If you are new to Kubernetes, it is worth reading the following article for a quick start :
 https://hackernoon.com/getting-started-with-microservices-and-kubernetes-76354312b556  
 
 # Oracle Code One 2018 demo  
