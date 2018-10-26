@@ -24,9 +24,10 @@ kubectl apply -f ./kube/ambassador.yaml
 kubectl apply -f ./kube/hr-service-with-ambassador.yaml  
 9. Get the URL for reaching ambassador ingress controller. This is used for accessing hr-service exposed via ambassador in next step     
 minikube service ambassador --url  
->>http://192.168.99.100:32402   
-10. Open http://192.168.99.100:32402/graphiql  on browser (Please note that  URL changes with value returned by 'minikube service ambassador --url' )  
-
+e.g: http://192.168.99.100:32402   
+10. Open the URL that you got in previous step  on browser and append graphiql ( e.g http://192.168.99.100:32402/graphiql )  
+11. You can now try all GraphQL queries using graphiql UI editor window.   
+  
 Following are some examples for you to try out on graphiql window :  
 ```javascript
 Demo - GraphQL in JavaScript  
