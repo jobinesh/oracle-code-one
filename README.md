@@ -1,6 +1,8 @@
 # Building a Polyglot GraphQL Server  
 This example is used for demonstrating GaphQL features dicussed as part of the following talk in Oracle Code One 2018 : https://oracle.rainfocus.com/widget/oracle/oow18/catalogcodeone18?search=DEV6113  
-
+  
+To checkout the presentation slides used for this session [visit this link](https://static.rainfocus.com/oracle/oow18/sess/1526618246355001wDNO/PF/DEV6113_Purushothaman_15404417239460019Dyp.pdf)   
+  
 If you are new to Kubernetes, please read the following article for a quick start :
 https://hackernoon.com/getting-started-with-microservices-and-kubernetes-76354312b556  
 
