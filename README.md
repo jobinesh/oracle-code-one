@@ -1,23 +1,32 @@
+# If you are new to Kubernetes, it is worth reading the following aritcle 
+https://hackernoon.com/getting-started-with-microservices-and-kubernetes-76354312b556  
+
 # Oracle Code One 2018 demo  
-# Set up Kubernetes locally  
-Install minikube https://kubernetes.io/docs/tasks/tools/install-minikube/  
-# Set up demo project 
+Here are the steps for running this demo:  
+1. Install minikube locally so that you can have a local Kubernetes environment to try out this demo : https://kubernetes.io/docs/tasks/tools/install-minikube/  
+2. Clone the demo project, open the terminal and go to the project folder (polyglot-demo). Following steps assume that you are on this folder
 git clone https://github.com/jobinesh/oracle-code-one.git  
 cd  &lt;oracle-code-one>/polyglot-demo  
+3. Start the minikube  
 minikube start   
+4. Make Minikube to use  local docker registry  
 eval $(minikube docker-env)  
+5. Build docker images for all GraphQL services  
 docker build -t loc-service:v1 ./loc-service/   
 docker build -t emp-service:v1 ./emp-service/  
 docker build -t hr-service:v1 ./hr-service/  
+6. Deploy and boot up employee and location services in Kubernetes  
 kubectl apply -f ./kube/emp-service.yaml  
 kubectl apply -f ./kube/loc-service.yaml  
+7. Deploy and boot up ambassador (ingress controller) 
 kubectl apply -f ./kube/ambassador.yaml  
+8. Deploy and boot up hr-service. This service is exposed via ambassador ingress controller for use by external clients  
 kubectl apply -f ./kube/hr-service-with-ambassador.yaml  
+9. Get the URL for reaching ambassador ingress controller. This is used for accessing hr-service exposed via ambassador in next step     
+minikube service ambassador --url  
+>>http://192.168.99.100:32402   
+10. Open http://192.168.99.100:32402/graphiql  on browser (Please note that  URL changes with value returned by 'minikube service ambassador --url' )  
 
->>minikube service ambassador --url  
->>http://192.168.99.100:32402  
-
-Open http://192.168.99.100:32402/graphiql  on browser (Please note that  URL changes with value returned by 'minikube service ambassador --url' )  
 Following are some examples for you to try out on graphiql window :  
 ```javascript
 Demo - GraphQL in JavaScript  
