@@ -1,8 +1,11 @@
-If you are new to Kubernetes, it is worth reading the following article for a quick start :
+# Building a Polyglot GraphQL Server  
+This example is used for demonstrating GaphQL features dicussed as part of the following talk in Oracle Code One 2018 : https://oracle.rainfocus.com/widget/oracle/oow18/catalogcodeone18?search=DEV6113  
+
+If you are new to Kubernetes, please read the following article for a quick start :
 https://hackernoon.com/getting-started-with-microservices-and-kubernetes-76354312b556  
 
-# Oracle Code One 2018 demo  
 Here are the steps for running this demo:  
+  
 1. Install minikube locally so that you can have a local Kubernetes environment to try out this demo : https://kubernetes.io/docs/tasks/tools/install-minikube/  
 2. Clone the demo project, open the terminal and go to the project folder (polyglot-demo). Following steps assume that you are on this folder
 git clone https://github.com/jobinesh/oracle-code-one.git  
