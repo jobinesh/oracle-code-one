@@ -2,6 +2,10 @@
 
 Simple demo GraphQL written in Java   
 
+### Schema Used in this Example   
+
+https://github.com/jobinesh/oracle-code-one/blob/master/polyglot-demo/emp-service/src/main/resources/schema.graphqls   
+
 ### Running the example 
 
 docker build -t emp-service:v1 .  
