@@ -1,13 +1,13 @@
 # emp-service
 
-Simple demo GraphQL written in Java 
+Simple demo GraphQL written in Java   
 
-### Running the example
+### Running the example 
 
-docker build -t emp-service:v1 .
-docker run -p 8080:8080  emp-service:v1 
+docker build -t emp-service:v1 .  
+docker run -p 8080:8080  emp-service:v1   
 
-
+```
 Introspection
 -------------
 
@@ -130,8 +130,7 @@ mutation updateEmployee($empInput: EmployeeInput) {
   }
 }
 
-
-
+```
 
 
 
